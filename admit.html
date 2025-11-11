@@ -1,0 +1,135 @@
+<center><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Event Registration Portal</h1>
+            <p>Register for workshops and events</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('register')">Register</button>
+            <button class="tab-btn" onclick="showTab('admin')">Admin Dashboard</button>
+        </nav>
+
+        <!-- Registration Form -->
+        <div id="register-tab" class="tab-content active">
+            <div class="form-container">
+                <h2>Event Registration Form</h2>
+                <form id="registrationForm" onsubmit="handleRegistration(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name :</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address :</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact Number :</label>
+                        <input type="tel" id="contact" name="contact" required placeholder="+1 234 567 8900">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event">Select Event/Workshop :</label>
+                        <select id="event" name="event" required>
+                            <option value="">Choose an event...</option>
+                            <option value="Web Development Workshop">Web Development Workshop</option>
+                            <option value="Data Science Bootcamp">Data Science Bootcamp</option>
+                            <option value="UI/UX Design Masterclass">UI/UX Design Masterclass</option>
+                            <option value="Digital Marketing Seminar">Digital Marketing Seminar</option>
+                            <option value="Cloud Computing Training">Cloud Computing Training</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="Cybersecurity Workshop">Cybersecurity Workshop</option>
+                            <option value="AI & Machine Learning">AI & Machine Learning</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes (Optional)</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any special requirements or questions..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Register for Event</button>
+                </form>
+
+                <div id="success-message" class="message success-message" style="display: none;">
+                    <h3>✅ Registration Successful!</h3>
+                    <p>You will receive a confirmation email shortly.</p>
+                </div>
+
+                <div id="error-message" class="message error-message" style="display: none;">
+                    <h3>❌ Registration Failed</h3>
+                    <p id="error-text"></p>
+                </div>
+            </div>
+        </div><hr>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-tab" class="tab-content">
+            <div class="dashboard-container">
+                <h2>Admin Dashboard</h2>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3 id="total-registrations">0</h3>
+                        <p>Total Registrations</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="unique-events">0</h3>
+                        <p>Unique Events</p>
+                    </div>
+                </div>
+
+                <div class="search-filter-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search by name, email, or event..." onkeyup="filterParticipants()">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="filter-box">
+                        <label for="event-filter">Filter by Event:</label>
+                        <select id="event-filter" onchange="filterParticipants()">
+                            <option value="">All Events</option>
+                        </select>
+                    </div>
+                    <button class="export-btn" onclick="exportData()">Export to CSV</button>
+                </div>
+
+                <div class="table-container">
+                    <table id="participants-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Event</th>
+                                <th>Registration Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="participants-tbody">
+                            <!-- Participants will be loaded here -->
+                        </tbody>
+                    </table>
+                    <div id="no-results" class="no-results" style="display: none;">
+                        <p>No participants found matching your search criteria.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html></center>
+
+

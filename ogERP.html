@@ -1,0 +1,88 @@
+<center><h1 style="color: indigo;">Event Register Portal</h1>
+<p>Tutorial|Training|Mini project</p>
+
+<table>
+    <tr>
+        <td>
+            Name:
+        </td><td><input type="text" placeholder="Enter your name"></td>
+    </tr>
+    <tr>
+        <td>Age:</td> <td> <input type="number" placeholder="Enter your age"</td>
+    </tr>
+    <tr>
+        <td>E-mail:</td> <td> <input type="text" placeholder="Enter your email"></td>
+    </tr>
+    <tr>
+        <td>Contact:</td> <td><input type="number" placeholder="Enter your phone no"></td>
+    </tr>
+    <tr>
+        <td>Event choice</td> <td><select>
+            <option>python programming</option>
+            <option>java</option>
+            <option>HTML</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td> <input type="SUBMIT"></td> <td><input type="RESET"></td>
+    </tr>
+</table>
+<hr>
+<!-- Admin Dashboard -->
+        <div id="admin-tab" class="tab-content">
+            <div class="dashboard-container">
+                <h2 style="color: darkcyan;">Admin Dashboard</h2>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3 id="total-registrations">0</h3>
+                        <p>Total Registrations</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="unique-events">0</h3>
+                        <p>Unique Events</p>
+                    </div>
+                </div>
+
+                <div class="search-filter-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search by name, email, or event..." onkeyup="filterParticipants()">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="filter-box">
+                        <label for="event-filter">Filter by Event:</label>
+                        <select id="event-filter" onchange="filterParticipants()">
+                            <option value="">All Events</option>
+                        </select>
+                    </div>
+                    <button class="export-btn" onclick="exportData()">Export to CSV</button>
+                </div> <hr style="color: darkorchid;">
+
+                <div class="table-container">
+                    <table id="participants-table">
+                        <thead>
+                            <tr style="color: darkmagenta;">
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Event</th>
+                                <th>Registration Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="participants-tbody">
+                            <!-- Participants will be loaded here -->
+                        </tbody>
+                    </table>
+                    <div id="no-results" class="no-results" style="display: none;">
+                        <p>No participants found matching your search criteria.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html></center>
